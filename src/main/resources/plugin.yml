@@ -1,0 +1,8 @@
+name: CustomSMP
+version: '${project.version}'
+main: me.lunafy.customsmp.CustomSMP
+api-version: '1.20'
+commands:
+  getstat:
+    usage: /<command>
+    description: lol
