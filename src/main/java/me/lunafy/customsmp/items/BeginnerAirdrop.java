@@ -38,4 +38,8 @@ public class BeginnerAirdrop extends Airdrop {
 
         return beginnerAirdrop;
     }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.LIGHT_PURPLE;
+    }
 }

@@ -37,4 +37,8 @@ public class LegendaryAirdrop extends Airdrop {
 
         return legendaryAirdrop;
     }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.YELLOW;
+    }
 }

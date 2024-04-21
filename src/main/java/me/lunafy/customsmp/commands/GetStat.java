@@ -1,8 +1,7 @@
 package me.lunafy.customsmp.commands;
 
 import me.lunafy.customsmp.CustomSMP;
-import me.lunafy.customsmp.items.BeginnerAirdrop;
-import me.lunafy.customsmp.items.CommonAirdrop;
+import me.lunafy.customsmp.items.*;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -18,7 +17,26 @@ public class GetStat implements CommandExecutor {
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            player.getInventory().addItem(BeginnerAirdrop.getAirdropItem());
+            switch(args[0].toLowerCase()) {
+                case "beginner":
+                    player.getInventory().addItem(BeginnerAirdrop.getAirdropItem());
+                    break;
+                case "common":
+                    player.getInventory().addItem(CommonAirdrop.getAirdropItem());
+                    break;
+                case "uncommon":
+                    player.getInventory().addItem(UncommonAirdrop.getAirdropItem());
+                    break;
+                case "rare":
+                    player.getInventory().addItem(RareAirdrop.getAirdropItem());
+                    break;
+                case "legendary":
+                    player.getInventory().addItem(LegendaryAirdrop.getAirdropItem());
+                    break;
+                case "mythic":
+                    player.getInventory().addItem(MythicAirdrop.getAirdropItem());
+                    break;
+            }
 
 
         }

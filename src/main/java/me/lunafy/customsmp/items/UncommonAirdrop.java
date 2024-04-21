@@ -27,7 +27,7 @@ public class UncommonAirdrop extends Airdrop {
         List<String> uncommonAirdropLore = new ArrayList<String>();
         uncommonAirdropLore.add(ChatColor.RED + "This airdrop contains valuable resources.");
         uncommonAirdropLore.add("");
-        uncommonAirdropLore.add(ChatColor.translateAlternateColorCodes('&', "&fRarity: &9&lUNCOMMON"));
+        uncommonAirdropLore.add(ChatColor.translateAlternateColorCodes('&', "&fRarity: &a&lUNCOMMON"));
 
         uncommonAirdropMeta.setLore(uncommonAirdropLore);
 
@@ -36,5 +36,9 @@ public class UncommonAirdrop extends Airdrop {
         uncommonAirdrop.setItemMeta(uncommonAirdropMeta);
 
         return uncommonAirdrop;
+    }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.GREEN;
     }
 }

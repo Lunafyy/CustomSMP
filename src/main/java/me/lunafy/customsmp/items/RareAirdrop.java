@@ -27,7 +27,7 @@ public class RareAirdrop extends Airdrop {
         List<String> rareAirdropLore = new ArrayList<String>();
         rareAirdropLore.add(ChatColor.RED + "This airdrop contains valuable resources.");
         rareAirdropLore.add("");
-        rareAirdropLore.add(ChatColor.translateAlternateColorCodes('&', "&fRarity: &7&lRARE"));
+        rareAirdropLore.add(ChatColor.translateAlternateColorCodes('&', "&fRarity: &9&lRARE"));
 
         rareAirdropMeta.setLore(rareAirdropLore);
 
@@ -36,5 +36,9 @@ public class RareAirdrop extends Airdrop {
         rareAirdrop.setItemMeta(rareAirdropMeta);
 
         return rareAirdrop;
+    }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.BLUE;
     }
 }

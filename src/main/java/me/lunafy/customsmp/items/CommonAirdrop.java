@@ -37,4 +37,8 @@ public class CommonAirdrop extends Airdrop {
 
         return commonAirdrop;
     }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.GRAY;
+    }
 }

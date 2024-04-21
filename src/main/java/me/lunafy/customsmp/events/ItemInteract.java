@@ -47,12 +47,12 @@ public class ItemInteract implements Listener {
             if(rarityLine.contains("BEGINNER")) {
                 type = AirdropType.BEGINNER;
                 player.getInventory().removeItem(BeginnerAirdrop.getAirdropItem());
-            } else if(rarityLine.contains("COMMON")) {
+            } else if(rarityLine.contains("UNCOMMON")) {
                 type = AirdropType.COMMON;
-                player.getInventory().removeItem(CommonAirdrop.getAirdropItem());
-            } else if (rarityLine.contains("UNCOMMON")) {
-                type = AirdropType.UNCOMMON;
                 player.getInventory().removeItem(UncommonAirdrop.getAirdropItem());
+            } else if (rarityLine.contains("COMMON")) {
+                type = AirdropType.UNCOMMON;
+                player.getInventory().removeItem(CommonAirdrop.getAirdropItem());
             } else if (rarityLine.contains("RARE")) {
                 type = AirdropType.RARE;
                 player.getInventory().removeItem(RareAirdrop.getAirdropItem());

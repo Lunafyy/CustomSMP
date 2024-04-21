@@ -37,4 +37,8 @@ public class MythicAirdrop extends Airdrop {
 
         return mythicAirdrop;
     }
+
+    public static ChatColor inventoryTitleColour() {
+        return ChatColor.DARK_PURPLE;
+    }
 }
