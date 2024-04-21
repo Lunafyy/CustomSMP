@@ -16,7 +16,7 @@ public class CropsFarmed {
 
     public static void triggerAlert(Player player) {
         String alertMessage = "W FARMER";
-        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + "&a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 40, 60, 40);
+        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + "&a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 20, 20 * 5, 20);
     }
 
     public static boolean requirementsCheck(Player player) {
