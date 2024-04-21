@@ -1,6 +1,8 @@
 package me.lunafy.customsmp.events;
 
 import me.lunafy.customsmp.CustomSMP;
+import me.lunafy.customsmp.enums.AirdropType;
+import me.lunafy.customsmp.items.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -24,6 +26,7 @@ public class ChangeBlock implements Listener {
             fb.setDropItem(false);
 
             if(fb.getMaterial() == Material.BEACON && fb.hasMetadata("airdrop")) {
+
                 Bukkit.getScheduler().runTaskLater(CustomSMP.getInstance(), new Runnable() {
                     @Override
                     public void run() {
@@ -33,12 +36,34 @@ public class ChangeBlock implements Listener {
 
                         event.getBlock().setType(Material.CHEST);
 
+                        AirdropType rarity = (AirdropType) fb.getMetadata("airdrop").get(0).value();
+
                         Chest chest = (Chest) event.getBlock().getState();
                         Inventory chestInv = chest.getInventory();
 
                         LootContext context = new LootContext.Builder(chest.getLocation()).build();
 
-                        LootTables.VILLAGE_WEAPONSMITH.getLootTable().fillInventory(chestInv, new Random(), context);
+                        switch(rarity) {
+                            case BEGINNER:
+                                BeginnerAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case COMMON:
+                                CommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case UNCOMMON:
+                                UncommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case RARE:
+                                RareAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case LEGENDARY:
+                                LegendaryAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case MYTHIC:
+                                MythicAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                        }
+
                     }
                 }, 20 * 3);
 

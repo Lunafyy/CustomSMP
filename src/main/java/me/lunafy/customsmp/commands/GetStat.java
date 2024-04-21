@@ -1,6 +1,8 @@
 package me.lunafy.customsmp.commands;
 
 import me.lunafy.customsmp.CustomSMP;
+import me.lunafy.customsmp.items.BeginnerAirdrop;
+import me.lunafy.customsmp.items.CommonAirdrop;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -15,12 +17,8 @@ public class GetStat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(sender instanceof Player) {
             Player player = (Player) sender;
-            Location plrLoc = player.getLocation();
 
-            player.getWorld().spawnFallingBlock(plrLoc.add(0, 46, 0), Material.OAK_FENCE, (byte)0);
-
-            FallingBlock beacon = player.getWorld().spawnFallingBlock(plrLoc.add(0, 50, 0), Material.BEACON, (byte)0);
-            beacon.setMetadata("airdrop", new FixedMetadataValue(CustomSMP.getInstance(), true));
+            player.getInventory().addItem(BeginnerAirdrop.getAirdropItem());
 
 
         }
