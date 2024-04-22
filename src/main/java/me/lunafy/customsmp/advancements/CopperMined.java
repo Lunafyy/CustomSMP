@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class CopperMined {
+public class CopperMined extends CustomAdvancement {
     public static String getAdvancementUID() {
         return "CSTM_COPPER_MINED";
     }

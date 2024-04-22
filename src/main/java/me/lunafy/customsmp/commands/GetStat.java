@@ -37,8 +37,6 @@ public class GetStat implements CommandExecutor {
                     player.getInventory().addItem(MythicAirdrop.getAirdropItem());
                     break;
             }
-
-
         }
         return true;
     }

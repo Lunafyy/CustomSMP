@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class CropsFarmed {
+public class CropsFarmed extends CustomAdvancement {
     public static String getAdvancementUID() {
         return "CSTM_CROPS_FARMED";
     }
