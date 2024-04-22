@@ -56,32 +56,32 @@ public class ChangeBlock implements Listener {
 
                         switch(rarity) {
                             case BEGINNER:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + BeginnerAirdrop.inventoryTitleColour() + "BEGINNER");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + BeginnerAirdrop.inventoryTitleColour() + ChatColor.BOLD + "BEGINNER");
 
                                 BeginnerAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case COMMON:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + CommonAirdrop.inventoryTitleColour() + "COMMON");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + CommonAirdrop.inventoryTitleColour() + ChatColor.BOLD + "COMMON");
 
                                 CommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case UNCOMMON:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + UncommonAirdrop.inventoryTitleColour() + "UNCOMMON");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + UncommonAirdrop.inventoryTitleColour() + ChatColor.BOLD + "UNCOMMON");
 
                                 UncommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case RARE:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + RareAirdrop.inventoryTitleColour() + "RARE");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + RareAirdrop.inventoryTitleColour() + ChatColor.BOLD + "RARE");
 
                                 RareAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case LEGENDARY:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + LegendaryAirdrop.inventoryTitleColour() + "LEGENDARY");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + LegendaryAirdrop.inventoryTitleColour() + ChatColor.BOLD + "LEGENDARY");
 
                                 LegendaryAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case MYTHIC:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + MythicAirdrop.inventoryTitleColour() + "MYTHIC");
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + MythicAirdrop.inventoryTitleColour() + ChatColor.BOLD + "MYTHIC");
 
                                 MythicAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
