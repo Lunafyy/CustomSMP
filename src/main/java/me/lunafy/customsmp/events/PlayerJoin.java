@@ -16,7 +16,7 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if(!CustomSMP.getDataManager().getConfig().contains("players." + player.getUniqueId())) {
+        if(FirstJoin.requirementsCheck(player)) {
             AdvancementsHelper.giveAdvancement(player, FirstJoin.getAdvancementUID());
 
             FirstJoin.triggerAlert(player);

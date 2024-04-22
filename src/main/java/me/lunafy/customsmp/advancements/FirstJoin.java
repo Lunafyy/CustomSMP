@@ -1,5 +1,6 @@
 package me.lunafy.customsmp.advancements;
 
+import me.lunafy.customsmp.CustomSMP;
 import me.lunafy.customsmp.exceptions.StaticMethodNotImplementedException;
 import me.lunafy.customsmp.utils.AdvancementsHelper;
 import org.bukkit.ChatColor;
@@ -22,7 +23,7 @@ public class FirstJoin extends CustomAdvancement {
     public static boolean requirementsCheck(Player player) {
         if(AdvancementsHelper.hasAdvancement(player, getAdvancementUID())) return false;
 
-        return player.isOnline();
+        return player.isOnline() && !CustomSMP.getDataManager().getConfig().contains("players." + player.getUniqueId());
     }
 
     public static void giveRewards(Player player) {

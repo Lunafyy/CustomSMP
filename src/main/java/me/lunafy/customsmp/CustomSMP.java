@@ -1,6 +1,7 @@
 package me.lunafy.customsmp;
 
 import me.lunafy.customsmp.commands.GetStat;
+import me.lunafy.customsmp.commands.HauntedNight;
 import me.lunafy.customsmp.events.*;
 import me.lunafy.customsmp.utils.DataManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,6 +24,7 @@ public final class CustomSMP extends JavaPlugin {
 
     private void registerCommands() {
         getCommand("getstat").setExecutor(new GetStat());
+        getCommand("haunt").setExecutor(new HauntedNight());
     }
 
     private void registerEvents() {

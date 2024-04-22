@@ -8,3 +8,6 @@ commands:
   getstat:
     usage: /<command>
     description: lol
+  haunt:
+    usage: /<command>
+    description: hauntee
