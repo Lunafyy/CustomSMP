@@ -8,9 +8,7 @@ import java.util.List;
 
 public class AdvancementsHelper {
     public static boolean hasAdvancement(Player player, String advancementUID) {
-        if(CustomSMP.getDataManager().getConfig().getStringList("players." + player.getUniqueId()).contains(advancementUID)) return true;
-
-        return false;
+        return CustomSMP.getDataManager().getConfig().getStringList("players." + player.getUniqueId()).contains(advancementUID);
     }
 
     public static void giveAdvancement(Player player, String advancementUID) {
@@ -22,5 +20,14 @@ public class AdvancementsHelper {
         }
 
         CustomSMP.getDataManager().saveConfig();
+    }
+
+    public static void registerNewPlayer(Player player) {
+        if(!CustomSMP.getDataManager().getConfig().contains("players." + player.getUniqueId())) {
+
+            CustomSMP.getDataManager().getConfig().set("players." + player.getUniqueId(), new ArrayList<String>());
+
+            CustomSMP.getDataManager().saveConfig();
+        }
     }
 }

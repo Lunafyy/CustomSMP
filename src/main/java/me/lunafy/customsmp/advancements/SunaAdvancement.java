@@ -3,7 +3,7 @@ package me.lunafy.customsmp.advancements;
 import me.lunafy.customsmp.exceptions.StaticMethodNotImplementedException;
 import org.bukkit.entity.Player;
 
-public abstract class CustomAdvancement {
+public abstract class SunaAdvancement {
     public static String getAdvancementUID() throws StaticMethodNotImplementedException {
         throw new StaticMethodNotImplementedException("You must implement the method to return an advancement UID.");
     }

@@ -9,14 +9,14 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class CopperMined extends CustomAdvancement {
+public class CopperMined extends SunaAdvancement {
     public static String getAdvancementUID() {
         return "CSTM_COPPER_MINED";
     }
 
     public static void triggerAlert(Player player) {
         String alertMessage = "COPPER ISN'T SO BAD";
-        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + "&a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 20, 20 * 5, 20);
+        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + " &a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 20, 20 * 5, 20);
     }
 
     public static boolean requirementsCheck(Player player) {

@@ -44,14 +44,35 @@ public class ItemInteract implements Listener {
             List<String> lore = item.getItemMeta().getLore();
             String rarityLine = lore.get(lore.size() - 1);
 
+            Location dropLocation;
+            Block targetBlock = player.getTargetBlock(null, 100);
+
+            if(targetBlock.getType() == Material.AIR) {
+                dropLocation = player.getLocation();
+            } else {
+                dropLocation = targetBlock.getLocation();
+            }
+
+            
+            // ps: this 1 for loop took about an hour
+            // im going to kill myself now
+            Location toCheck = dropLocation;
+            for(int i = 1; i < 51; i++) {
+                toCheck = toCheck.add(0, 1, 0);
+                if(!toCheck.getBlock().getType().isAir()) {
+                    player.sendMessage(ChatColor.RED + "The airdrop can't reach here!");
+                    return;
+                }
+            }
+
             if(rarityLine.contains("BEGINNER")) {
                 type = AirdropType.BEGINNER;
                 player.getInventory().removeItem(BeginnerAirdrop.getAirdropItem());
             } else if(rarityLine.contains("UNCOMMON")) {
-                type = AirdropType.COMMON;
+                type = AirdropType.UNCOMMON;
                 player.getInventory().removeItem(UncommonAirdrop.getAirdropItem());
             } else if (rarityLine.contains("COMMON")) {
-                type = AirdropType.UNCOMMON;
+                type = AirdropType.COMMON;
                 player.getInventory().removeItem(CommonAirdrop.getAirdropItem());
             } else if (rarityLine.contains("RARE")) {
                 type = AirdropType.RARE;
@@ -66,18 +87,6 @@ public class ItemInteract implements Listener {
                 player.sendMessage(ChatColor.RED + "There has been an error with your airdrop, please report this to Lunafy");
                 return;
             }
-
-            Location dropLocation;
-            Block targetBlock = player.getTargetBlock(null, 100);
-
-            if(targetBlock.getType() == Material.AIR) {
-                dropLocation = player.getLocation();
-            } else {
-                dropLocation = targetBlock.getLocation();
-            }
-
-
-            player.getWorld().spawnFallingBlock(dropLocation.add(0, 46, 0), Material.OAK_FENCE, (byte)0);
 
             FallingBlock beacon = player.getWorld().spawnFallingBlock(dropLocation.add(0, 50, 0), Material.BEACON, (byte)0);
             beacon.setMetadata("airdrop", new FixedMetadataValue(CustomSMP.getInstance(), type));

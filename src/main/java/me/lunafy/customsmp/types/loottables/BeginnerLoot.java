@@ -55,8 +55,8 @@ public class BeginnerLoot implements LootTable {
         List<ItemStack> slots = new ArrayList<ItemStack>();
         List<ItemStack> loot = (List<ItemStack>) populateLoot(random, lootContext);
 
-        for(ItemStack newI : loot) {
-            System.out.println(newI.getType().toString());
+        for(ItemStack newItem : loot) {
+            System.out.println(newItem.getType());
         }
 
         for(int i = 0; i < inventorySize - loot.size(); i++) {
@@ -67,11 +67,9 @@ public class BeginnerLoot implements LootTable {
 
         Collections.shuffle(slots);
 
-        int index = 0;
         for(int i = 0; i < inventorySize; i++) {
             System.out.println(slots.get(i));
             inventory.setItem(i, slots.get(i));
-            index++;
         }
     }
 

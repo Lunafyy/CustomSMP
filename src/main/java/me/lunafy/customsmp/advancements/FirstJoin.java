@@ -1,7 +1,6 @@
 package me.lunafy.customsmp.advancements;
 
 import me.lunafy.customsmp.CustomSMP;
-import me.lunafy.customsmp.exceptions.StaticMethodNotImplementedException;
 import me.lunafy.customsmp.utils.AdvancementsHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,14 +9,14 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class FirstJoin extends CustomAdvancement {
+public class FirstJoin extends SunaAdvancement {
     public static String getAdvancementUID() {
         return "CSTM_FIRST_JOIN";
     }
 
     public static void triggerAlert(Player player) {
         String alertMessage = "WELCOME!";
-        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + "&a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 20, 20 * 5, 20);
+        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&a&l&kA &a&l" + alertMessage + " &a&l&kA"), ChatColor.GREEN + "New advancement unlocked", 20, 20 * 5, 20);
     }
 
     public static boolean requirementsCheck(Player player) {

@@ -15,9 +15,11 @@ import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.loot.LootContext;
 import org.bukkit.loot.LootTables;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -30,20 +32,18 @@ public class ChangeBlock implements Listener {
     public void onChangeBlock(EntityChangeBlockEvent event) {
         if(event.getEntity() instanceof FallingBlock) {
             FallingBlock fb = (FallingBlock) event.getEntity();
-            fb.setDropItem(false);
+            fb.setCancelDrop(false);
 
             if(fb.getMaterial() == Material.BEACON && fb.hasMetadata("airdrop")) {
-
+                AirdropType rarity = (AirdropType) fb.getMetadata("airdrop").get(0).value();
+                event.getBlock().setMetadata("airdrop", new FixedMetadataValue(CustomSMP.getInstance(), rarity));
                 Bukkit.getScheduler().runTaskLater(CustomSMP.getInstance(), new Runnable() {
                     @Override
                     public void run() {
-                        event.setCancelled(true);
-
+                        event.getBlock().setMetadata("airdrop", new FixedMetadataValue(CustomSMP.getInstance(), rarity));
                         event.getBlock().getWorld().spawnParticle(Particle.EXPLOSION_HUGE, event.getBlock().getLocation(), 10, null);
 
                         event.getBlock().setType(Material.CHEST);
-
-                        AirdropType rarity = (AirdropType) fb.getMetadata("airdrop").get(0).value();
 
                         Chest chest = (Chest) event.getBlock().getState();
                         Inventory chestInv = chest.getInventory();
@@ -60,15 +60,15 @@ public class ChangeBlock implements Listener {
 
                                 BeginnerAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
-                            case COMMON:
-                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + CommonAirdrop.inventoryTitleColour() + ChatColor.BOLD + "COMMON");
-
-                                CommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
-                                break;
                             case UNCOMMON:
                                 DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + UncommonAirdrop.inventoryTitleColour() + ChatColor.BOLD + "UNCOMMON");
 
                                 UncommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
+                                break;
+                            case COMMON:
+                                DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + CommonAirdrop.inventoryTitleColour() + ChatColor.BOLD + "COMMON");
+
+                                CommonAirdrop.getLootTable().fillInventory(chestInv, new Random(), context);
                                 break;
                             case RARE:
                                 DHAPI.addHologramLine(hologram, ChatColor.WHITE + "Rarity: " + RareAirdrop.inventoryTitleColour() + ChatColor.BOLD + "RARE");
@@ -99,7 +99,6 @@ public class ChangeBlock implements Listener {
                                     hologram.delete();
 
                                     chest.getLocation().getBlock().setType(Material.AIR);
-                                    chest.getLocation().add(0, -1, 0).getBlock().setType(Material.AIR);
 
                                     chest.getLocation().getWorld().spawnParticle(Particle.EXPLOSION_HUGE, chest.getLocation(), 20);
 

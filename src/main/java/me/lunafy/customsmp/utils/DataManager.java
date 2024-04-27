@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 
 public class DataManager {
     private final CustomSMP instance;
-
     private File configFile;
     private YamlConfiguration dataConfig;
 
@@ -34,12 +33,16 @@ public class DataManager {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
             this.dataConfig.setDefaults(defaultConfig);
         }
+
+        System.out.println("RELOADED");
     }
 
     public FileConfiguration getConfig() {
         if(this.dataConfig == null) {
             reloadConfig();
         }
+
+        System.out.println("GOTTEN");
 
         return this.dataConfig;
     }
@@ -54,6 +57,8 @@ public class DataManager {
         } catch (IOException e) {
             instance.getLogger().severe("Could not save config to " + this.configFile + e);
         }
+
+        System.out.println("SAVED");
     }
 
     public void saveDefaultConfig() {
@@ -64,5 +69,7 @@ public class DataManager {
         if(!this.configFile.exists()) {
             this.instance.saveResource("advancements.yml", false);
         }
+
+        System.out.println("SAVED DEFAULT");
     }
 }
