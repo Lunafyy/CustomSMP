@@ -22,7 +22,7 @@ public class FirstJoin extends SunaAdvancement {
     public static boolean requirementsCheck(Player player) {
         if(AdvancementsHelper.hasAdvancement(player, getAdvancementUID())) return false;
 
-        return player.isOnline() && !CustomSMP.getDataManager().getConfig().contains("players." + player.getUniqueId());
+        return player.isOnline() && !CustomSMP.getAdvancementManager().getConfig().contains("players." + player.getUniqueId());
     }
 
     public static void giveRewards(Player player) {

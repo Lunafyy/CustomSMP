@@ -4,15 +4,12 @@ import me.lunafy.customsmp.CustomSMP;
 import me.lunafy.customsmp.advancements.FirstJoin;
 import me.lunafy.customsmp.utils.AdvancementsHelper;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
-import java.util.ArrayList;
 
 public class PlayerJoin implements Listener {
     @EventHandler
@@ -40,6 +37,6 @@ public class PlayerJoin implements Listener {
             }, 20 * 2);
         }
 
-        CustomSMP.getDataManager().saveConfig();
+        CustomSMP.getAdvancementManager().saveConfig();
     }
 }

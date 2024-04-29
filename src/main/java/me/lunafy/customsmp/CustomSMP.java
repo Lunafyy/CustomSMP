@@ -2,6 +2,7 @@ package me.lunafy.customsmp;
 
 import me.lunafy.customsmp.commands.GetStat;
 import me.lunafy.customsmp.commands.HauntedNight;
+import me.lunafy.customsmp.enums.ConfigType;
 import me.lunafy.customsmp.enums.ItemRarity;
 import me.lunafy.customsmp.events.*;
 import me.lunafy.customsmp.types.SunaItem;
@@ -13,19 +14,20 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.*;
 import java.util.HashMap;
 
 public final class CustomSMP extends JavaPlugin {
     private static CustomSMP instance;
-    private static DataManager dataManager;
+    private static DataManager advancementManager;
+    private static DataManager structureManager;
     private static HashMap<Material, ItemRarity> itemRarities = new HashMap<Material, ItemRarity>();
 
     @Override
     public void onEnable() {
         instance = this;
 
-        dataManager = new DataManager(this);
+        advancementManager = new DataManager(this, "advancements.yml");
+        structureManager = new DataManager(this, "structures.yml");
 
         registerCommands();
         registerEvents();
@@ -1536,9 +1538,16 @@ public final class CustomSMP extends JavaPlugin {
     public static CustomSMP getInstance() {
         return instance;
     }
-    public static DataManager getDataManager() {
-        return dataManager;
- }
+    public static DataManager getConfigManager(ConfigType type) {
+        switch(type) {
+            case ADVANCEMENT:
+                return advancementManager;
+            case STRUCTURE:
+                return structureManager;
+            default:
+                return null;
+        }
+    }
     public static HashMap<Material, ItemRarity> getItemRarities() {
         return itemRarities;
     }

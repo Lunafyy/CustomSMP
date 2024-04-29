@@ -13,21 +13,23 @@ public class DataManager {
     private final CustomSMP instance;
     private File configFile;
     private YamlConfiguration dataConfig;
+    private String configFileName;
 
-    public DataManager(CustomSMP instance) {
+    public DataManager(CustomSMP instance, String configFileName) {
         this.instance = instance;
+        this.configFileName = configFileName;
 
         saveDefaultConfig();
     }
 
     public void reloadConfig() {
         if(this.configFile == null) {
-            this.configFile = new File(this.instance.getDataFolder(), "advancements.yml");
+            this.configFile = new File(this.instance.getDataFolder(), configFileName);
         }
 
         this.dataConfig = YamlConfiguration.loadConfiguration(this.configFile);
 
-        InputStream defaultStream = this.instance.getResource("advancements.yml");
+        InputStream defaultStream = this.instance.getResource(configFileName);
 
         if(defaultStream != null) {
             YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
@@ -63,11 +65,11 @@ public class DataManager {
 
     public void saveDefaultConfig() {
         if(this.configFile == null) {
-            this.configFile = new File(this.instance.getDataFolder(), "advancements.yml");
+            this.configFile = new File(this.instance.getDataFolder(), configFileName);
         }
 
         if(!this.configFile.exists()) {
-            this.instance.saveResource("advancements.yml", false);
+            this.instance.saveResource(configFileName, false);
         }
 
         System.out.println("SAVED DEFAULT");
